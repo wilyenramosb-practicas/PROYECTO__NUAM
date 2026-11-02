@@ -1,0 +1,39 @@
+services:
+  database:
+    image: mongo:latest
+    container_name: nuam_mongo_db
+    restart: always
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo_data:/data/db
+
+  backend:
+    build: ./backend
+    container_name: nuam_django_backend
+    restart: always
+    command: python manage.py runserver 0.0.0.0:8000
+    volumes:
+      - ./backend:/app
+    ports:
+      - "8000:8000"
+    environment:
+      - MONGO_URI=mongodb://database:27017/nuam_dj1948
+    depends_on:
+      - database
+
+  frontend:
+    build: ./frontend
+    container_name: nuam_react_frontend
+    restart: always
+    command: npm run dev -- --host
+    volumes:
+      - ./frontend:/app
+      - /app/node_modules
+    ports:
+      - "5173:5173"
+    depends_on:
+      - backend
+
+volumes:
+  mongo_data:
