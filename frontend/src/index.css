@@ -1,0 +1,35 @@
+:root {
+  --color-naranja: #f97316;
+  --color-naranja-hover: #ea580c;
+}
+
+body {
+  background-color: #f8f9fa;
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+}
+
+/* Clases personalizadas sobre Bootstrap */
+.bg-naranja {
+  background-color: var(--color-naranja) !important;
+  color: #ffffff !important;
+}
+
+.btn-naranja {
+  background-color: var(--color-naranja) !important;
+  border-color: var(--color-naranja) !important;
+  color: #ffffff !important;
+  font-weight: 500;
+}
+
+.btn-naranja:hover {
+  background-color: var(--color-naranja-hover) !important;
+  border-color: var(--color-naranja-hover) !important;
+}
+
+.text-naranja {
+  color: var(--color-naranja) !important;
+}
+
+.border-naranja {
+  border-color: var(--color-naranja) !important;
+}

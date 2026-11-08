@@ -9,8 +9,12 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "autoprefixer": "^10.6.2",
+    "bootstrap": "^5.3.8",
+    "postcss": "^8.5.32",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "tailwindcss": "^4.3.5"
   },
   "devDependencies": {
     "@types/react": "^18.2.66",
