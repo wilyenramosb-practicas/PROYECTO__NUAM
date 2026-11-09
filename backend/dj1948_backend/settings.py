@@ -37,7 +37,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'tributario'
+    'tributario',
+    'rest_framework'
 ]
 
 MIDDLEWARE = [
@@ -72,13 +73,6 @@ WSGI_APPLICATION = 'dj1948_backend.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/6.1/ref/settings/#databases
-
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
-}
 
 
 # Password validation
@@ -125,4 +119,22 @@ MAILERS = {
     'default': {
         'BACKEND': 'django.core.mail.backends.console.EmailBackend',
     },
+}
+DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+from mongoengine import connect
+
+# Conexión nativa a MongoDB
+connect(
+    db='dj1948_tributario_db',
+    host='localhost',
+    port=27017
+)
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework.authentication.TokenAuthentication',
+    ],
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.IsAuthenticated',
+    ],
 }
